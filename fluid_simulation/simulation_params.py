@@ -1,3 +1,3 @@
 class SimulationParams:
-    radius: float = 10.0
-    gravity: float = 10.0
+    particle_radius: float = 10.0
+    gravity: float = 0.0

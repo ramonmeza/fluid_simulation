@@ -21,5 +21,5 @@ class FluidParticle(GameObject):
 
     def render(self, screen) -> None:
         pygame.draw.circle(
-            screen, Colors.LightBlue, self.position, SimulationParams.radius
+            screen, Colors.LightBlue, self.position, SimulationParams.particle_radius
         )
