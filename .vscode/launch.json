@@ -12,9 +12,10 @@
             "justMyCode": true,
             "args": [
                 "--window-width",
-                "1280",
+                "1920",
                 "--window-height",
-                "720"
+                "1080",
+                "--fullscreen"
             ]
         }
     ]
