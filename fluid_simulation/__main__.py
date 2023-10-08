@@ -7,8 +7,8 @@ from .game import Game
 
 def main(window_width: int, window_height: int, fullscreen: bool) -> int:
     try:
-        game = Game(window_width, window_height, fullscreen)
-        game.run()
+        Game.init(window_width, window_height, fullscreen)
+        Game.run()
     except Exception as e:
         logging.critical("An error occurred: %s", str(e))
         return -1
