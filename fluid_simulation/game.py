@@ -4,6 +4,7 @@ import dearpygui.dearpygui as dpg
 import pygame
 
 from .colors import Colors
+from .debug_window import DebugWindow
 from .fluid_particle import FluidParticle
 from .game_object import GameObject
 
@@ -37,24 +38,13 @@ class Game:
         Game.game_objects.append(FluidParticle(particle_pos))
 
         if Game.debug:
-            dpg.create_context()
-            dpg.create_viewport(title="Custom Title", width=600, height=200)
-            dpg.setup_dearpygui()
-            with dpg.window(tag="Debug Window", label="Debug Window"):
-                dpg.add_text("Hello, world")
-
-            dpg.show_viewport()
-            dpg.set_primary_window("Debug Window", True)
+            Game.game_objects.append(DebugWindow())
 
     def update(dt: float) -> None:
         for game_object in Game.game_objects:
             game_object.update(dt)
 
     def render() -> None:
-        # render debug tools
-        if Game.debug:
-            dpg.render_dearpygui_frame()
-
         # render all game objects
         Game.window.fill(Colors.Black)
         for game_object in Game.game_objects:
@@ -75,6 +65,6 @@ class Game:
             Game.update(dt)
             Game.render()
 
-        if Game.debug:
-            dpg.destroy_context()
+        for game_object in Game.game_objects:
+            game_object.destroy()
         pygame.quit()

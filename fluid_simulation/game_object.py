@@ -9,3 +9,6 @@ class GameObject(abc.ABC):
 
     def render(self, screen: pygame.Surface) -> None:
         raise NotImplementedError("render() not implemented")
+
+    def destroy(self) -> None:
+        pass
