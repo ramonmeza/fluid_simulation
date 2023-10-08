@@ -7,6 +7,7 @@ from .colors import Colors
 from .debug_window import DebugWindow
 from .fluid_particle import FluidParticle
 from .game_object import GameObject
+from .vector2 import Vector2
 
 
 class Game:
@@ -32,7 +33,7 @@ class Game:
 
         Game.game_objects = []
 
-        particle_pos = pygame.Vector2(
+        particle_pos = Vector2(
             Game.screen.get_width() / 2, Game.screen.get_height() / 2
         )
         Game.game_objects.append(FluidParticle(particle_pos))
