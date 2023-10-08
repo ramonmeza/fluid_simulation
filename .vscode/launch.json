@@ -11,11 +11,16 @@
             "module": "fluid_simulation",
             "justMyCode": true,
             "args": [
+                "--debug",
                 "--window-width",
-                "1920",
+                "1280",
                 "--window-height",
-                "1080",
-                "--fullscreen"
+                "720"
+                // "--window-width",
+                //"1920",
+                // "--window-height",
+                //"1080",
+                //"--fullscreen"
             ]
         }
     ]
