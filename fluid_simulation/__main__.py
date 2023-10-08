@@ -1,8 +1,9 @@
 import argparse
 import datetime
-import time
 import logging
+import pathlib
 import sys
+import time
 
 from .game import Game
 
@@ -20,9 +21,12 @@ def main(window_width: int, window_height: int, fullscreen: bool, debug: bool) -
 
 
 if __name__ == "__main__":
+    if not pathlib.Path("logs").exists():
+        pathlib.Path("logs").mkdir()
+
     unix_now = int(time.mktime(datetime.datetime.now().timetuple()))
     logging.basicConfig(
-        filename=f"fluid_simulation-{unix_now}.log",
+        filename=f"logs/fluid_simulation-{unix_now}.log",
         encoding="utf-8",
         level=logging.DEBUG,
         format="%(asctime)s %(levelname)s: %(message)s",
