@@ -48,7 +48,10 @@ class DebugWindow(GameObject):
             size=2,
             min_value=0,
             max_value=1920,
-            default_value=[SimulationParams.bounds_size.x, SimulationParams.bounds_size.y],
+            default_value=[
+                SimulationParams.bounds_size.x,
+                SimulationParams.bounds_size.y,
+            ],
             callback=self.update_bounds_size,
         )
         self.collision_dampening_slider = dpg.add_slider_float(
@@ -64,33 +67,42 @@ class DebugWindow(GameObject):
 
     def update_gravity(sender):
         val = dpg.get_value(DebugWindow.GRAVITY_SLIDER_ID)
-        print(f"Gravity changed: {val}")
         SimulationParams.gravity = val
 
     def update_particle_radius(sender):
         val = dpg.get_value(DebugWindow.PARTICLE_RADIUS_SLIDER_ID)
-        print(f"Particle Radius changed: {val}")
         SimulationParams.particle_radius = val
-        
+
     def update_bounds_size(sender):
         val = dpg.get_value(DebugWindow.BOUNDS_SIZE_SLIDER_ID)
         x = val[0]
         y = val[1]
-        print(f"Bounds Size changed: {x}, {y}")
         SimulationParams.bounds_size = Vector2(x, y)
 
     def update_collision_dampening(sender):
         val = dpg.get_value(DebugWindow.COLLISION_DAMPENING_SLIDER_ID)
-        print(f"Collision Dampening changed: {val}")
         SimulationParams.collision_dampening = val
-        
+
     def update(self, dt: float) -> None:
         pass
 
     def render(self, screen: pygame.Surface) -> None:
         dpg.render_dearpygui_frame()
-        pos = Vector2((screen.get_width() / 2) - (SimulationParams.bounds_size.x / 2), (screen.get_height() / 2) - (SimulationParams.bounds_size.y / 2))
-        pygame.draw.rect(screen, Colors.Green, pygame.Rect(pos.x, pos.y, SimulationParams.bounds_size.x, SimulationParams.bounds_size.y), 1)
+        pos = Vector2(
+            (screen.get_width() / 2) - (SimulationParams.bounds_size.x / 2),
+            (screen.get_height() / 2) - (SimulationParams.bounds_size.y / 2),
+        )
+        pygame.draw.rect(
+            screen,
+            Colors.Green,
+            pygame.Rect(
+                pos.x,
+                pos.y,
+                SimulationParams.bounds_size.x,
+                SimulationParams.bounds_size.y,
+            ),
+            1,
+        )
 
     def destroy(self) -> None:
         dpg.destroy_context()
