@@ -8,8 +8,8 @@ packages = [{include = "fluid_simulation"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pygame = "^2.5.2"
-dearpygui = "^1.10.0"
+pygame = "^2.6.1"
+dearpygui = "^2.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
